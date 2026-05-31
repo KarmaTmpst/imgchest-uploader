@@ -1,0 +1,19 @@
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers de configuration utilisateur (Clé API privée)
+config.json
+
+# Environnement virtuel Python
+.venv/
+venv/
+env/
+
+# Fichiers de dépendances système et IDE
+.idea/
+.vscode/
+.DS_Store
+*.log
