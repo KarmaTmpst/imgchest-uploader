@@ -8,7 +8,20 @@ import sys
 
 import json
 
-CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+def _get_config_dir():
+    """Return a per-user config directory, outside the project tree, so the
+    saved API key is never affected by changes to the project itself."""
+    if sys.platform == 'win32':
+        base = os.environ.get('APPDATA') or os.path.expanduser('~')
+    elif sys.platform == 'darwin':
+        base = os.path.join(os.path.expanduser('~'), 'Library', 'Application Support')
+    else:
+        base = os.environ.get('XDG_CONFIG_HOME') or os.path.join(os.path.expanduser('~'), '.config')
+    config_dir = os.path.join(base, 'imgchest-uploader')
+    os.makedirs(config_dir, exist_ok=True)
+    return config_dir
+
+CONFIG_FILE = os.path.join(_get_config_dir(), 'config.json')
 DEFAULT_API_KEY = ""
 
 def load_api_key():

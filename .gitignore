@@ -4,7 +4,9 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Fichiers de configuration utilisateur (Clé API privée)
+# Filet de sécurité : la clé API est désormais stockée hors du projet
+# (répertoire de config utilisateur de l'OS). On ignore quand même tout
+# config.json local au cas où un ancien fichier subsisterait.
 config.json
 
 # Environnement virtuel Python
